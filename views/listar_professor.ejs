@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+body { margin: 0;   font-family: Arial, Helvetica, sans-serif;   background-color: WHITE;
+}
+
+.header { background-color: #d9d7d7;  height:130px;  }
+
+h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-bottom:0.2%;
+}
+
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+          border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
+
+.button:hover { background-color: #171717;  }
+
+.logo{margin-top:-10px;}
+
+#botao1{margin-right:0.5%;}
+#botao2{margin-left:1%; margin-right:2%;}
+
+table { border-collapse: collapse;  border-spacing: 0;  width: 100%; border: 1px solid #ddd; background-color:#d9d7d7; margin-left:-3%; margin-top:-45px;
+}
+
+th, td { text-align: left;   padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.botaoalterar{width:100%; background-color:green; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px;  font-weight: bold;}
+.botaoalterar:hover{opacity : 0.7;}
+
+.botaodeletar{width:100%; background-color:red; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px; font-weight: bold;}
+.botaodeletar:hover{opacity : 0.7;}
+
+.botaobuscar{float:left; height:8 px; width: 3%; padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey; margin-right:6%;}
+.barrabuscar{float:left; width:40%; height:26px; background-color: white; margin-left:28%; }
+
+</style>
+<head>
+  <title>Questoes cadastradas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="header">
+<img class="logo" src="imagens/logo.png" width="300" height="180">
+  <a href="/logar"><button id="botao2" class="button">SAIR</button></a>
+<a href="/indexAdm"><button id="botao1"class="button">VOLTAR</button></a>
+
+</div>
+<form action="/listarProfessor" method="get"></form>
+<br><br><br><br><br><br>
+
+<form>
+  <input class="barrabuscar" type="text" placeholder="Buscar..." name="xxxxxxxxxxxxxxxx">
+  <button class="botaobuscar" type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+  <h2>Professores Cadastrados</h2>         
+  <div style="overflow-x:auto; padding:100px;">
+  <table>
+      <tr>
+        <th>RM</th>
+        <th>Nome</th>
+	    <th>Sobrenome</th>
+		<th colspan="2" style="text-align:center">AÇÕES</th>
+      </tr>
+	  <% for(var i=0;i<busca.length;i++){ %>
+  
+      <tr>
+	  <td><%= busca[i].rm_professor %></td>  
+      <td><%= busca[i].nome_prof %></td>
+      <td><%= busca[i].sobrenome_prof %></td>
+	  <td> <a href="/buscaEditarProfessor/<%=busca[i].rm_professor %>"><button class="botaoalterar">Alterar</button></a>
+	  <td><a href="/deletarProfessor/<%=busca[i].rm_professor %>"><button class="botaodeletar">Deletar</button></a>
+	 
+      </tr>
+	</div>
+	  <% } %>
+  </table>
+
+
+</body>
+</html>

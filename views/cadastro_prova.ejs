@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cadastro de Provas</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: WHITE;
+      }
+
+      .header {
+        overflow: hidden;
+        background-color: DodgerBlue;
+        padding: 20px 10px;
+      }
+
+      #btn {
+        float: left;
+        background-color: green;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 17%;
+        text-align: center;
+        border-radius: 3px;
+        font-weight: bold;
+        margin-right: 3%;
+      }
+
+      #btn:hover { opacity: 0.8;  color: white; }
+    </style>
+  </head>
+
+  <body>
+      <div class="header">
+        <img src="imagens/logo.png" width="300" height="180" />
+      </div>
+
+      <div class="container">
+        <div>
+            <div class="">
+                <label for="">BIMESTRE</label>
+                <br>
+                <select name="" id="">
+                   <option value="1bim">1º bimestre</option>
+                   <option value="2bim">2º bimestre</option>
+                   <option value="3bim">3º bimestre</option>
+                   <option value="4bim">4º bimestre</option>
+                </select>
+            </div>
+            <br>
+            <form action="/cadastroprova" method="post">
+            <div class="">
+                <label for="">SÉRIE</label>
+                <br>
+                <select name="turma" id="">
+                   <option name="turma" value="1">1º Ano</option>
+                   <option name="turma" value="2">2º Ano</option>
+                   <option name="turma" value="3">3º Ano</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="">
+                <label for="">DISCIPLINA</label>
+                <br>
+                <select name="" id="">
+                   <option value="fisica">Física</option>
+                   <option value="quimica">Química</option>
+                   <option value="gso">GSO</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <hr>
+
+          <h3>Questões</h3>
+          <div>
+            <p>
+              <button type="submit" id="btn" class="botoesB">CADASTRAR</button>
+            </p>
+          </div>
+          <input type="number" hidden id="rm_professor" name="rm_professor" />
+          <div>
+            <label for="">Menções </label>
+            <br>
+            <label for="">MB</label>
+            <input type="number" min="0" name="mencao_mb" max="10" placeholder="Pontos" />
+            &nbsp;
+            <label for="">B</label>
+            <input type="number" min="0" name="mencao_b" max="10" placeholder="Pontos" />
+            &nbsp;
+            <label for="">R</label>
+            <input type="number" min="0" name="mencao_r" max="10" placeholder="Pontos" />
+            &nbsp;
+            <label for="">I</label>
+            <input type="number" disabled min="0" max="10" placeholder="Pontos" />
+        </div>
+        <br>
+        <br>
+        <div>
+            <% for(var i=0; i<busca.length; i++){ %>
+                <input type="checkbox" value="<%= (busca[i].id_questoes) %>"
+                  name="id_questoes"
+                  id="<%= busca[i].id_questoes %>"/>
+
+                <label for="<%= busca[i].id_questoes %>">
+                  <%= busca[i].questao %> - (<%= busca[i].pontuacao %> pontos)
+                </label>
+                <br>
+            <% } %>
+        </div>
+    </form>
+    </div>
+
+    <script>
+      document.getElementById("rm_professor").value =
+        localStorage.getItem('rm_professor');
+    </script>
+  </body>
+</html>

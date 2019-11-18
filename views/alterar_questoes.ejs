@@ -7,7 +7,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 }
 .header { background-color: #d9d7d7;  height:130px;  }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -20,7 +20,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 .login h2{ color: white;  text-align: center;
 }
 
-.login p {color:white; margin-bottom:0.5%;} 
+.login p {color:white; margin-bottom:0.5%;}
 
 select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-block;  border: 1px solid #ccc;  box-sizing: border-box;   color:black;
 }
@@ -31,7 +31,7 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 #btn { float:right; background-color:green; color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
 	text-align: center; 	border-radius:3px;   font-weight: bold; margin-right:3%;
 }
-	
+
 #btn2 {	float:right; background-color:yellow; color: #424242;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
 	text-align: center; 	border-radius:3px; font-weight: bold;	}
 
@@ -42,14 +42,14 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 }
 .btn-group .button {
   background-color: #4CAF50; border: none; color: white; padding: 15px 32px; float:right;  margin-top:-9%; margin-right:3%;
-  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer; 
-}	
-	
+  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer;
+}
+
 </style>
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img src="/imagens/logo.png" class="logo" width="300" height="180" />
   <a href="/logarProfessor"><button id="botao2" class="button">SAIR</button></a>
 <a href="/listarQuestoes"><button id="botao1"class="button">VOLTAR</button></a>
 
@@ -58,7 +58,7 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 <div class="login">
 
  <form action='/editarQuestoes' method='post' >
- 
+
 <h2>EDITAR QUESTÃO </h2>
 <br>
  <% for(var i=0;i<busca.length;i++){ %>
@@ -70,8 +70,8 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
     <option value="quimica" id="orange">Quimíca</option>
 	<option value="gso" id="orange">GSO</option>
   </select>
- 
- 
+
+
       <p> BIMESTRE:</p>
 <select name="bimestre" > <br>
     <option><%=busca[0].bimestre%></option>
@@ -80,8 +80,8 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 	 <option value="3bim" id="orange">3° Bimestre</option>
 	 <option value="4bim" id="orange">4° Bimestre</option>
   </select>
- 
-  
+
+
   <p> SÉRIE:</p>
 <select name="serie" > <br>
     <option><%=busca[0].serie%></option>
@@ -89,30 +89,30 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
     <option value="2ano" id="orange">2° Ano</option>
 	 <option value="3ano" id="orange">3° Ano</option>
   </select>
- 
-  
+
+
   <p>QUESTÃO:</p>
   <textarea name="questao" style="resize: none; width:100%; height: 140px;"><%=busca[0].questao%></textarea>
-  
+
 <p>ALTERNATIVA A:</p>
  <textarea name="alternativa_a"  style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_a %></textarea>
- 
- 
+
+
 <p>ALTERNATIVA B:</p>
   <textarea name="alternativa_b" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_b %></textarea>
 
-  
+
 <p>ALTERNATIVA C:</p>
   <textarea name="alternativa_c" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_c %></textarea>
-  
-  
+
+
 <p>ALTERNATIVA D:</p>
   <textarea name="alternativa_d" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_d %></textarea>
-  
-  
+
+
  <p>ALTERNATIVA E:</p>
   <textarea name="alternativa_e" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_e %></textarea>
-  
+
 
 <p>PONTOS:</p>
 <select name="pontuacao">
@@ -124,8 +124,8 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
   <option value="5">5</option>
 </select>
 
-  
-  
+
+
   <p>CORRETA:</p>
 <select name="correta">
    <option><%=busca[0].correta%></option>
@@ -136,9 +136,8 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 	<option value="e">E</option>
   </select>
   <br><br>
-  <a href="/indexProf"><button type="button" id="btn2" class="btn" >VOLTAR</button></a>
   <button type="submit" id="btn" class="btn">EDITAR</button>
-  
+
 	</div>
 </form>
   <% } %>

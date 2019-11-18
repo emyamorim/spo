@@ -2,45 +2,27 @@
 <body>
 <head>
 <style>
-.div1 { border:1px solid #69c4f5;  background-color:#69c4f5;  padding:10px;  width:800px;
- height: 200px;  margin-left:20%; margin-top: 10%;
-}
+body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color: WHITE;}
 
-h1{
-font-family: Arial, Helvetica, sans-serif; color: white; text-align:center;
-}
 
-.div2{  border:1px solid #f56970;   background-color:#f56970;  width:130px;  height: 60px;
- margin-left:40%;   margin-top:5%;  border-radius:5px; padding-top:20px; padding-left:10px;
-}
-
-.button2 {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  margin-left:40%;
-} 
-
-.button2:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
 .header { background-color: #d9d7d7;  height:130px;  }
+
 .button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
+
 .logo{margin-top:-10px;}
+
 #botao2{margin-left:1%; margin-right:2%;}
 
+.botoesB:hover { background-color:#171717;}
+.botoesB { width: 70%;  padding: 10px 18px;  background-color: #424242; border-radius:5px; 
+           font-weight: bold; color: white;    margin: -20px 80px;  border: none;  cursor: pointer;height:50px;}
+
+.container1 { margin-left:28%; margin-right:30px; width:500px; height:240px;  background-color:#d9d7d7; display: inline-block; margin-top:100px; margin-bottom:30px;}
+
+#container h2{background-color:#187280; color:white; text-align:center; padding:8px; margin-top:0px;  width: auto; margin-bottom:20%;}
 
 </style>
 </head>
@@ -50,9 +32,9 @@ font-family: Arial, Helvetica, sans-serif; color: white; text-align:center;
   <a href="/logarAluno"><button id="botao2" class="button">SAIR</button></a>
 </div>
 
-<div class="div1">
-<h1>PROVAS DISPONIVEIS</h1>
-<a href="/provas"> <button class="button2">VISUALIZAR</button></a>
-</div>
+<div class="container1" id="container">
+  <h2>PROVAS DISPONÍVEIS</h2>
+    <a href="/provas"><button type="button" class="botoesB">VISUALIZAR</button></a>
+  </div>
 </body>
 </html>

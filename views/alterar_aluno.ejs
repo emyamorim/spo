@@ -7,7 +7,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 }
 .header { background-color: #d9d7d7;  height:130px;  }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -20,23 +20,23 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 .login h2{ color: white;  text-align: center;
 }
 
-.login p {color:white; margin-bottom:0.5%;} 
+.login p {color:white; margin-bottom:0.5%;}
 
 .login{ width:50%; padding: 30px;	margin-top:4%;	margin-right: 24%;   margin-left:20px;  margin-bottom: 50px;   float:right; background-color:#01A9B2;
 }
 
 #btn { margin-right:100px; background-color:green; color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
-	text-align: center; 	border-radius:3px;   font-weight: bold;
+	text-align: center; 	border-radius:3px;   font-weight: bold; float:right;
 }
 
 
 
-	
+
 </style>
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img src="imagens/logo.png" class="logo" width="300" height="180" />
   <a href="/logar"><button id="botao2" class="button">SAIR</button></a>
 <a href="/listarAluno"><button id="botao1"class="button">VOLTAR</button></a>
 
@@ -45,21 +45,21 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 <div class="login">
 
  <form action='/editarAluno' method='post' >
- 
+
 <h2>EDITAR ALUNO </h2>
 <br>
  <% for(var i=0;i<busca.length;i++){ %>
 
   <p>RM:</p>
   <input name="rm_aluno" value="<%=busca[0].rm_aluno %>" style="resize: none; width:100%; height: 30px;"></input>
-  
+
 <p>NOME:</p>
  <input name="nome_aluno"  value="<%=busca[0].nome_aluno %>" style="resize: none; width:100%; height: 30px;" > </input>
- 
- 
+
+
 <p>SOBRENOME:</p>
   <input name="sobrenome_aluno" value="<%=busca[0].sobrenome_aluno %>" style="resize: none; width:100%; height: 30px;"> </input>
-   
+
 <p>Série</p>
         <select style="resize: none; width:100%; height: 40px;" name="serie_aluno"> <br>
         <option value="volvo"><%=busca[0].serie_aluno %></option>
@@ -70,14 +70,14 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 	    <option value="3Info" id="orange">3° ano - INFO</option>
 		<option value="3Log" id="orange">3° ano - LOG</option>
           </select>
-		  
+
 <p>Turma</p>
           <select style="resize: none; width:100%; height: 40px;" name="turma_aluno"> <br>
           <option><%=busca[0].turma_aluno %></option>
           <option value="a" id="apple">A</option>
 	      <option value="b" id="apple">B</option>
           </select>
-		  
+
   <button type="submit" id="btn" class="btn">EDITAR</button>
 	</div>
 </form>

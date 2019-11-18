@@ -418,15 +418,12 @@ module.exports = function(app) {
 
   app.post('/cadastroprova', function(req, res) {
     var dados = req.body;
+    if (!dados.questao_descricao) {
+      console.warn('Selecione pelo menos uma questão ou mais!');
+    }
 
     var bancoProva = new app.infra.bancoProva(app.infra.conexao());
-
-    dados.id_questoes.forEach(id_questao => {
-      var novoObjeto = dados;
-      novoObjeto.id_questoes = id_questao;
-
-      bancoProva.salvar(novoObjeto);
-    });
+    bancoProva.salvar(dados);
 
     console.log('POST -> ', dados);
     return;

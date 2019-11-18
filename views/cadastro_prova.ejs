@@ -93,15 +93,15 @@ tr:nth-child(even){background-color: #f2f2f2}
   <option name="3bim">3° bimestre</option>
   <option name="4bim">4° bimestre</option>
 </select>
+<%
+  convertQuestionToJSON = function(value) {
+    value = JSON.stringify(value);
 
-<form action="/cadastroprova" method="POST">
-  <%
-  convertOptionToJSON = function(value) {
-    var obj = JSON.stringify(value);
-
-    return obj;
+    return value;
   }
   %>
+
+<form action="/cadastroprova" method="POST" onended="alert('Thank you for your feedback.')">
         <br>
         <hr>
         <h2>Adicionar Questões</h2>
@@ -130,7 +130,7 @@ tr:nth-child(even){background-color: #f2f2f2}
           <input type="number" name="mencao_r" min="0" max="10" placeholder="Pontos" />
           &nbsp;
           <label for="">I</label>
-          <input type="number" disabled min="0" max="10" placeholder="desabilitado" />
+          <input type="number" disabled  min="0" max="10" placeholder="< R" />
       </div>
       <br>
       <br>
@@ -143,7 +143,7 @@ tr:nth-child(even){background-color: #f2f2f2}
           <% for(var i=0; i < busca.length; i++){ %>
             <tr>
         <td>
-          <input type="checkbox" value="<%= convertOptionToJSON(busca[i]) %>"
+          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i]) %>"
             name="questao_descricao"
             id="<%= busca[i].id_questoes %>"
             />

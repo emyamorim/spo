@@ -418,14 +418,28 @@ module.exports = function(app) {
 
   app.post('/cadastroprova', function(req, res) {
     var dados = req.body;
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        res.render('sucessocadastroprova.ejs');
+      }
+    };
+
     if (!dados.questao_descricao) {
       console.warn('Selecione pelo menos uma questão ou mais!');
     }
 
     var bancoProva = new app.infra.bancoProva(app.infra.conexao());
-    bancoProva.salvar(dados);
 
-    console.log('POST -> ', dados);
+    if (Array.isArray(dados.questao_descricao)) {
+      dados.questao_descricao = `"${dados.questao_descricao}"`;
+    }
+
+    bancoProva.salvar(dados, callback);
+
+    console.log(dados);
     return;
   });
 };

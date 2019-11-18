@@ -195,8 +195,11 @@
         ><button type="button" class="botoesB">3° LOG</button></a
       >
     </div>
-    <script>
-      localStorage.setItem('rm_professor', '<%= rm_professor %>');
-    </script>
+
+      <% if (locals.rm_professor) { %>
+        <script>
+           localStorage.setItem('rm_professor', '<%= rm_professor %>');
+        </script>
+     <% } %>
   </body>
 </html>

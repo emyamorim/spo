@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: WHITE;
+}
+.header { background-color: #d9d7d7;  height:130px;  }
+
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+          border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
+
+.button:hover { background-color: #171717;  }
+
+.logo{margin-top:-10px;}
+
+#botao1{margin-right:0.5%;}
+#botao2{margin-left:1%; margin-right:2%;}
+
+.login h2{ color: white;  text-align: center;
+}
+
+.login p {color:white; margin-bottom:0.5%;}
+
+select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-block;  border: 1px solid #ccc;  box-sizing: border-box;   color:black;
+}
+
+.login{ width:50%; padding: 30px;	margin-top:4%;	margin-right: 24%;   margin-left:20px;  margin-bottom: 50px;   float:right; background-color:#01A9B2;
+}
+
+#btn { float:right; background-color:green; color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
+	text-align: center; 	border-radius:3px;   font-weight: bold; margin-right:3%;
+}
+
+#btn2 {	float:right; background-color:yellow; color: #424242;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
+	text-align: center; 	border-radius:3px; font-weight: bold;	}
+
+.btn:hover { opacity: 0.8;  color: white;
+}
+
+.btn-group .button:hover { background-color: #3e8e41;
+}
+.btn-group .button {
+  background-color: #4CAF50; border: none; color: white; padding: 15px 32px; float:right;  margin-top:-9%; margin-right:3%;
+  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<img src="/imagens/logo.png" class="logo" width="300" height="180" />
+  <a href="/logarProfessor"><button id="botao2" class="button">SAIR</button></a>
+<a href="/listarQuestoes"><button id="botao1"class="button">VOLTAR</button></a>
+
+</div>
+
+<div class="login">
+
+ <form action='/editarQuestoes' method='post' >
+
+<h2>EDITAR QUESTÃO </h2>
+<br>
+ <% for(var i=0;i<busca.length;i++){ %>
+ <input name="id_questoes"  value="<%=busca[0].id_questoes%>" style="display:none;"></input>
+     <p> DISICIPLINA: </p>
+ <select name="disciplina" > <br>
+    <option><%=busca[0].disciplina%></option>
+    <option value="fisica" id="apple">Fisíca</option>
+    <option value="quimica" id="orange">Quimíca</option>
+	<option value="gso" id="orange">GSO</option>
+  </select>
+
+
+      <p> BIMESTRE:</p>
+<select name="bimestre" > <br>
+    <option><%=busca[0].bimestre%></option>
+    <option value="1bim" id="apple">1° Bimestre</option>
+    <option value="2bim" id="orange">2° Bimestre</option>
+	 <option value="3bim" id="orange">3° Bimestre</option>
+	 <option value="4bim" id="orange">4° Bimestre</option>
+  </select>
+
+
+  <p> SÉRIE:</p>
+<select name="serie" > <br>
+    <option><%=busca[0].serie%></option>
+    <option value="1ano" id="apple">1° Ano</option>
+    <option value="2ano" id="orange">2° Ano</option>
+	 <option value="3ano" id="orange">3° Ano</option>
+  </select>
+
+
+  <p>QUESTÃO:</p>
+  <textarea name="questao" style="resize: none; width:100%; height: 140px;"><%=busca[0].questao%></textarea>
+
+<p>ALTERNATIVA A:</p>
+ <textarea name="alternativa_a"  style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_a %></textarea>
+
+
+<p>ALTERNATIVA B:</p>
+  <textarea name="alternativa_b" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_b %></textarea>
+
+
+<p>ALTERNATIVA C:</p>
+  <textarea name="alternativa_c" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_c %></textarea>
+
+
+<p>ALTERNATIVA D:</p>
+  <textarea name="alternativa_d" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_d %></textarea>
+
+
+ <p>ALTERNATIVA E:</p>
+  <textarea name="alternativa_e" style="resize: none; width:100%; height: 140px;"><%=busca[0].alternativa_e %></textarea>
+
+
+<p>PONTOS:</p>
+<select name="pontuacao">
+<option><%=busca[0].pontuacao%></option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+
+
+
+  <p>CORRETA:</p>
+<select name="correta">
+   <option><%=busca[0].correta%></option>
+    <option value="a">A</option>
+    <option value="b">B</option>
+    <option value="c">C</option>
+	<option value="d">D</option>
+	<option value="e">E</option>
+  </select>
+  <br><br>
+  <button type="submit" id="btn" class="btn">EDITAR</button>
+
+	</div>
+</form>
+  <% } %>
+</div>
+</body>
+</html>

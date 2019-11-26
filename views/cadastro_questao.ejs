@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: WHITE;
+}
+
+.header { background-color: #d9d7d7;  height:130px;  }
+
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+          border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
+
+.button:hover { background-color: #171717;  }
+
+.logo{margin-top:-10px;}
+
+#botao1{margin-right:0.5%;}
+#botao2{margin-left:1%; margin-right:2%;}
+
+.login h2{ color: white;  text-align: center;
+}
+
+.login p {color:white; margin-bottom:0.5%;}
+
+select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-block;  border: 1px solid #ccc;  box-sizing: border-box;   color:black;
+}
+
+.login{ width:50%; padding: 30px;	margin-top:4%;	margin-right: 24%;   margin-left:20px;  margin-bottom: 50px;   float:right; background-color:#01A9B2;
+}
+
+#btn { float:right; background-color:green; color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
+	text-align: center; 	border-radius:3px;   font-weight: bold; margin-right:3%;
+}
+
+.btn:hover { opacity: 0.8;  color: white;
+}
+
+.btn-group .button:hover { background-color: #3e8e41;
+}
+.btn-group .button {
+  background-color: #4CAF50; border: none; color: white; padding: 15px 32px; float:right;  margin-top:-9%; margin-right:3%;
+  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+<div class="header">
+<img class="logo" src="imagens/logo.png" width="300" height="180">
+  <a href="/logarProfessor"><button id="botao2" class="button">SAIR</button></a>
+<a href="/indexProf"><button id="botao1"class="button">VOLTAR</button></a>
+
+</div>
+
+<div class="login">
+
+ <form action='/cadastrarquestoes' method='post' >
+
+<h2>CADASTRAR QUESTÕES </h2>
+<br>
+     <p> DISICIPLINA: </p>
+ <select required name="disciplina">
+    <option></option>
+    <option name="fisica" id="apple">Fisíca</option>
+    <option name="quimica" id="orange">Quimíca</option>
+	<option name="gso" id="orange">GSO</option>
+  </select>
+
+
+      <p> BIMESTRE:</p>
+<select required name="bimestre">
+    <option></option>
+    <option name="1bim" id="apple">1° Bimestre</option>
+    <option name="2bim" id="orange">2° Bimestre</option>
+	 <option name="3bim" id="orange">3° Bimestre</option>
+	 <option name="4bim" id="orange">4° Bimestre</option>
+  </select>
+
+
+  <p> SÉRIE:</p>
+<select required name="serie">
+    <option></option>
+    <option name="1ano" id="apple">1° Ano</option>
+    <option name="2ano" id="orange">2° Ano</option>
+	 <option name="3ano" id="orange">3° Ano</option>
+  </select>
+
+
+
+  <p>QUESTÃO:</p>
+  <textarea required name="questao"  style="resize: none; width:100%; height: 140px;"></textarea>
+
+<p>ALTERNATIVA A:</p>
+ <textarea required name="alternativa_a"  style="resize: none; width:100%; height: 140px;" > </textarea>
+
+
+<p>ALTERNATIVA B:</p>
+  <textarea required name="alternativa_b" style="resize: none; width:100%; height: 140px;"> </textarea>
+
+
+<p>ALTERNATIVA C:</p>
+  <textarea required name="alternativa_c" style="resize: none; width:100%; height: 140px;"></textarea>
+
+
+<p>ALTERNATIVA D:</p>
+  <textarea required name="alternativa_d" style="resize: none; width:100%; height: 140px;"></textarea>
+
+
+ <p>ALTERNATIVA E:</p>
+  <textarea required name="alternativa_e" style="resize: none; width:100%; height: 140px;"></textarea>
+
+
+<p>PONTOS:</p>
+<select required name="pontuacao">
+<option></option>
+  <option name="1">1</option>
+  <option name="2">2</option>
+  <option name="3">3</option>
+  <option name="4">4</option>
+  <option name="5">5</option>
+</select>
+
+
+
+  <p>CORRETA:</p>
+<select required name="correta">
+   <option></option>
+    <option name="a">A</option>
+    <option name="b">B</option>
+    <option name="c">C</option>
+	<option name="d">D</option>
+	<option name="e">E</option>
+  </select>
+  <br><br>
+  <button type="submit" id="btn" class="btn">CADASTRAR</button>
+
+	</div>
+</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color: WHITE;}
+
+#botaofdp {  background-color: dodgerblue;  color: white;  padding: 14px 60px;  margin: 8px 0;  border: none;  cursor: pointer;	text-align: center;
+	         border-radius:3px; }
+#botaofdp:hover {background-color: #171717;}
+
+.header { background-color: #d9d7d7;  height:130px;  }
+
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+          border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
+
+.button:hover { background-color: #171717;  }
+
+.logo{margin-top:-10px;}
+
+#botao1{margin-right:0.5%;}
+#botao2{margin-left:1%; margin-right:2%;}
+
+#select{border:none; width:110px; margin-top:15px;}
+
+
+
+</style>
+  <meta charset="UTF-8">
+  <title>Login form</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="header">
+<img class="logo" src="imagens/logo.png" width="300" height="180">
+  <a href="/logar"><button id="botao2" class="button">Restrito</button></a>
+<a href="/logarProfessor"><button id="botao1"class="button">Professor</button></a>
+
+</div>
+
+
+<!-- partial:index.partial.html -->
+<div class="container">
+  <div class="formBox level-login">
+    <div class="box boxShaddow"></div>
+    <div class="box loginBox">
+      <h2>LOGIN</h2>
+      <form action="/logarAluno" method="post" class="form">
+        <div class="f_row">
+          <label>RM</label>
+          <input name="rm_aluno" id="rm_aluno" type="text" maxlength="5" class="input-field" required>
+          <u></u>
+        </div>
+        <div class="f_row last">
+          <label>Senha</label>
+          <input name="senha_aluno" type="password" class="input-field" required>
+          <u></u>
+        </div>
+         <button type="submit" id="botaofdp" class="btn-large">Entrar</button>
+
+        </button>
+        <div class="f_link">
+          <a href="" class="resetTag">Esqueceu a senha?</a>
+        </div>
+      </form>
+    </div>
+    <div class="box forgetbox">
+      <a href="#" class="back icon-back">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 199.404 199.404" style="enable-background:new 0 0 199.404 199.404;"
+	 xml:space="preserve">
+	<polygon points="199.404,81.529 74.742,81.529 127.987,28.285 99.701,0 0,99.702 99.701,199.404 127.987,171.119 74.742,117.876 
+		199.404,117.876 "/>
+</svg>
+      </a>
+	  
+	  <!------------------------------------------------------------>
+	  
+      <h2>Redefinir Senha</h2>
+     <form action="/editarSenhaAluno" method="post" class="form">
+       
+        <div class="f_row last">
+          <label>Digite seu RM</label>
+          <input type="text" name="rm_aluno" maxlength="5" class="input-field" required>
+		   <u></u> <br><br>
+		 <div class="f_row last">
+		  <label>Digite sua nova senha</label>
+          <input type="password" name="senha_aluno" class="input-field" required>
+          <u></u>
+		
+        </div></div>
+		<br><br><br><br>
+        <button type="submit" id="botaofdp" class="btn-large">Redefinir</button>
+        </button>
+      </form>
+    </div>
+	
+	<!------------------------------------------------------------>
+	
+    <div class="box registerBox" style="height:800px;width:500px;margin-bottom:100px;">
+      <span class="reg_bg"></span>
+	  <h2>Cadastrar</h2>
+      <form action="/cadastraraluno" method="post" class="form">
+        <div class="f_row">
+          <label>Nome</label>
+          <input name="nome_aluno" type="text" class="input-field" required>
+          <u></u>
+        </div>
+        <div class="f_row">
+          <label>Sobrenome</label>
+          <input name="sobrenome_aluno" type="text" class="input-field" required>
+          <u></u>
+        </div>
+        <div class="f_row last">
+          <label>RM</label>
+          <input name="rm_aluno" type="text" maxlength="5" class="input-field" required>
+          <u></u>
+        </div>
+		
+		   <div class="f_row last">
+          <label>Série</label>
+          <select id="select" class="input-field"  name="serie_aluno"> <br>
+        <option value="volvo"></option>
+        <option value="1Info" id="apple">1° ano - INFO</option>
+	    <option value="1Log" id="apple">1° ano - LOG</option>
+        <option value="2Info" id="orange">2° ano - INFO</option>
+		 <option value="2Log" id="orange">2° ano - LOG</option>
+	    <option value="3Info" id="orange">3° ano - INFO</option>
+		<option value="3Log" id="orange">3° ano - LOG</option>
+          </select>
+          <u></u>
+        </div>
+		<div class="f_row last">
+          <label name="turma_aluno">Turma</label>
+          <select id="select" class="input-field" name="turma_aluno"> <br>
+          <option></option>
+          <option value="a" id="apple">A</option>
+	      <option value="b" id="apple">B</option>
+          </select>
+          <u></u>
+        </div>
+		<div class="f_row last">
+          <label>Senha</label>
+          <input name="senha_aluno" type="password" class="input-field" required>
+          <u></u>
+        </div>
+		
+        <button type="submit" id="botaofdp" class="btn-large" onclick="funcao1()">cadastrar</button>
+      </form>
+    </div>
+    <a href="#" class="regTag icon-add">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
+<path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z"/>
+</svg>
+
+    </a>
+  </div>
+</div>
+<!-- partial -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="../script.js"></script>
+
+</body>
+</html>

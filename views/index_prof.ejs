@@ -145,7 +145,7 @@
 
     <a href="/cadastroprova"><button class="botoesA">CADASTRAR PROVA</button></a>
 
-    <a href="/listarProva/<%= rm_professor %>"><button class="botoesA">PROVAS CADASTRADAS</button></a>
+    <a id="listarProva"><button class="botoesA">PROVAS CADASTRADAS</button></a>
 
     <a href="/cadastrarquestoes"><button class="botoesA">CADASTRAR QUESTÕES</button></a>
 
@@ -197,7 +197,20 @@
       <% if (locals.rm_professor) { %>
         <script>
            localStorage.setItem('rm_professor', '<%= rm_professor %>');
+           var object = document.getElementById('listarProva');
+           object.setAttribute('href', '/listarProva/<%= rm_professor %>');
         </script>
      <% } %>
+
+     <% if (!locals.rm_professor) {%>
+      <script>
+        if (localStorage.getItem('rm_professor').length > 0) {
+          var rm_professor = localStorage.getItem('rm_professor');
+
+          var object = document.getElementById('listarProva')
+          .setAttribute('href', '/listarProva/'+ rm_professor);
+        }
+      </script>
+   <% } %>
   </body>
 </html>

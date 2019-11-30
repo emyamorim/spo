@@ -12,8 +12,16 @@ professorBanco.prototype.buscaGeral = function(callback) {
 
 professorBanco.prototype.busca = function(id, callback) {
   this._conexao.query(
-    'select * from professor where rm_professor=?',
+    'select * from professor where rm_professor = ?',
     id,
+    callback
+  );
+};
+
+professorBanco.prototype.busca2 = function(rm_professor, callback) {
+  this._conexao.query(
+    'select * from professor where rm_professor like ?',
+    rm_professor,
     callback
   );
 };

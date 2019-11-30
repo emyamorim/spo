@@ -37,6 +37,44 @@ module.exports = function(app) {
     });
   });
 
+  //FILTRO//
+  app.post('/listarQuestoesf', function(req, res) {
+    var questao = '%' + req.body.btnBuscar + '%';
+    var conexao = app.infra.conexao();
+    var questoesBanco = new app.infra.bancoQuestoes(conexao);
+    questoesBanco.busca2(questao, function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log(resposta);
+        res.render('listar_questoesf.ejs', { busca2: resposta });
+      }
+    });
+  });
+
+  //FILTRO-C//
+  app.post('/listarQuestoesc', function(req, res) {
+    var dados = req.body;
+    if (
+      dados.serie === '' &&
+      dados.disciplina === '' &&
+      dados.bimestre === ''
+    ) {
+      res.redirect('/listarQuestoes');
+    } else {
+      var conexao = app.infra.conexao();
+      var questoesBanco = new app.infra.bancoQuestoes(conexao);
+      questoesBanco.busca3(dados, function(erro, resposta) {
+        if (erro) {
+          console.log(erro);
+        } else {
+          console.log(resposta);
+          res.render('listar_questoesc.ejs', { busca3: resposta });
+        }
+      });
+    }
+  });
+
   //DELETAR//
   app.get('/deletarQuestoes/:id', function(req, res) {
     var id = req.params.id;
@@ -152,6 +190,21 @@ module.exports = function(app) {
         console.log(erro);
       } else {
         res.render('listar_aluno.ejs', { busca: resposta });
+      }
+    });
+  });
+
+  //FILTRO//
+  app.post('/listarAlunof', function(req, res) {
+    var rm_aluno = '%' + req.body.btnBuscar + '%';
+    var conexao = app.infra.conexao();
+    var alunoBanco = new app.infra.bancoAluno(conexao);
+    alunoBanco.busca2(rm_aluno, function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log(resposta);
+        res.render('listar_alunof.ejs', { busca2: resposta });
       }
     });
   });
@@ -281,6 +334,21 @@ module.exports = function(app) {
     });
   });
 
+  //FILTRO//
+  app.post('/listarProfessorf', function(req, res) {
+    var rm_professor = '%' + req.body.btnBuscar + '%';
+    var conexao = app.infra.conexao();
+    var professorBanco = new app.infra.bancoProfessor(conexao);
+    professorBanco.busca2(rm_professor, function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log(resposta);
+        res.render('listar_professorf.ejs', { busca2: resposta });
+      }
+    });
+  });
+
   //DELETAR//
   app.get('/deletarProfessor/:id', function(req, res) {
     var id = req.params.id;
@@ -370,9 +438,33 @@ module.exports = function(app) {
     res.render('adm_index.ejs');
   });
 
+  app.get('/indexAluno', function(req, res) {
+    res.render('index_aluno.ejs');
+  });
+
+  app.get('/listarProva', function(req, res) {
+    res.render('listar_prova.ejs');
+  });
+
+  app.get('/listarProvaaluno', function(req, res) {
+    res.render('listar_provaaluno.ejs');
+  });
+
+  app.get('/provaAluno', function(req, res) {
+    res.render('prova_aluno.ejs');
+  });
+
+  app.get('/gerarMencao', function(req, res) {
+    res.render('gerarMencao.ejs');
+  });
+
+  app.get('/mencoesaluno', function(req, res) {
+    res.render('mencoesaluno.ejs');
+  });
+
   //1 ano//
-  app.get('/escolherturma1anoa', function(req, res) {
-    res.render('escolherturma1anoa.ejs');
+  app.get('/mencoes1anoa', function(req, res) {
+    res.render('mençoes1anoa.ejs');
   });
   app.get('/escolherturma1anob', function(req, res) {
     res.render('escolherturma1anob.ejs');
@@ -417,6 +509,89 @@ module.exports = function(app) {
   });
 
   app.post('/cadastroprova', function(req, res) {
+    var dados = req.body;
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        res.render('sucessocadastroprova.ejs');
+      }
+    };
+
+    if (!dados.questao_descricao) {
+      console.warn('Selecione pelo menos uma questão ou mais!');
+    }
+
+    var bancoProva = new app.infra.bancoProva(app.infra.conexao());
+
+    if (Array.isArray(dados.questao_descricao)) {
+      dados.questao_descricao = `${dados.questao_descricao}`;
+    }
+
+    bancoProva.salvar(dados, callback);
+
+    console.log(dados);
+    return;
+  });
+
+  //FILTRO-C//
+  app.post('/listarQuestoesc', function(req, res) {
+    var dados = req.body;
+    if (
+      dados.serie === '' &&
+      dados.disciplina === '' &&
+      dados.bimestre === ''
+    ) {
+      res.redirect('/listarQuestoes');
+    } else {
+      var conexao = app.infra.conexao();
+      var questoesBanco = new app.infra.bancoQuestoes(conexao);
+      questoesBanco.busca3(dados, function(erro, resposta) {
+        if (erro) {
+          console.log(erro);
+        } else {
+          console.log(resposta);
+          res.render('listar_questoesc.ejs', { busca3: resposta });
+        }
+      });
+    }
+  });
+
+  // CADASTRO PROVA - FILTRO ANO DIS BIM//
+  app.post('/cadastroprovaff', function(req, res) {
+    var dados = req.body;
+    var conexao = app.infra.conexao();
+    var questoesBanco = new app.infra.bancoQuestoes(conexao);
+
+    questoesBanco.busca3(dados, function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.warn(resposta);
+        res.render('cadastro_provaf.ejs', { busca2: resposta });
+      }
+    });
+  });
+
+  // CADASTRO PROVA - FILTRO PELA DESCRIÇÃO //
+  app.post('/cadastroprovafff', function(req, res) {
+    var dados = req.body;
+    var conexao = app.infra.conexao();
+    var questoesBanco = new app.infra.bancoQuestoes(conexao);
+    questoesBanco.busca2(dados, function(erro, resposta) {
+      if (erro) {
+        console.log('certo1');
+        console.log(erro);
+      } else {
+        console.log('certa2');
+        console.warn(resposta);
+        res.render('cadastro_provaf.ejs', { busca2: resposta });
+      }
+    });
+  });
+
+  app.post('/cadastroprovaf', function(req, res) {
     var dados = req.body;
 
     var callback = function(erro, resposta) {

@@ -28,7 +28,7 @@ h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-b
 
 .barrabuscar{float:right; width:25%; height:32px; background-color: white;}
 
-.select{width:10%; height:30px; margin-left:2%; background-color: white;}
+.select{width:10%; height:30px; margin-left:2%; background-color: white}
 
 #btn { float:right;     background-color: green;      color: white;      padding: 14px 20px;      margin: 8px 0;      border: none;
         cursor: pointer;  width: 17%;    text-align: center;    border-radius: 3px;    font-weight: bold;     margin-right: 9%; margin-top:4%;}
@@ -57,9 +57,6 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 input {height:30px;}
 
-.titulo{float:right; margin-right:8%; margin-top:-6%;}
-.tituloinput{width:400px; height:35px;}
-
     </style>
   </head>
 
@@ -70,7 +67,9 @@ input {height:30px;}
 <a href="/indexProf"><button id="botao1"class="button">VOLTAR</button></a>
 
 </div>
+<form action="/cadastroprova" method="GET"></form>
 <br><br><br><br><br><br>
+
 
 <%
   convertQuestionToJSON = function(value) {
@@ -89,6 +88,7 @@ input {height:30px;}
           <button type="submit" id="btn">SALVAR PROVA</button>
         </p>
       </div>
+
      <br>     <br>     <br>
       <div class="label">
          <input type="number" hidden id="rm_professor" name="rm_professor" />
@@ -104,11 +104,6 @@ input {height:30px;}
           <label for="">I</label>
           <input type="number" disabled  min="1"  placeholder="< R" />
       </div>
-	    <div class="titulo">
-		  <h3> <label for="">Título da prova: </label></h3>
-          <input class="tituloinput" type="text" name="titulo" placeholder="Título da prova..." />
-	  </div>
-
 	   <div class="label">
           <h3>Turma:</h3>
           <select style="resize: none; width:10%; height: 35px;" name="turma">
@@ -119,14 +114,13 @@ input {height:30px;}
       </div>
       <br>
       <br>
-      <div>
 
-	  <form method="post" action="/cadastroprovafff">
+      <form method="post" action="/listarQuestoesf">
         <button class="botaobuscar" type="submit"><i class="fa fa-search"></i></button>
-        <input class="barrabuscar" type="text" placeholder="Buscar......" >
+        <input class="barrabuscar" type="text" placeholder="Buscar...">
       </form>
 
-      <form method="post" action="/cadastroprovaff">
+      <form method="post" action="/listarQuestoesc">
         <select name="serie" class="select">
           <option value="" >Série</option>
           <option name="1° Ano" id="apple">1° Ano</option>
@@ -151,25 +145,31 @@ input {height:30px;}
         <button class="buscar" type="submit"><i class="fa fa-search"></i></button>
       </form>
 
-	  <div style="overflow-x:auto; padding:100px; width: 90%; margin: auto;">
+    </div>
+    <div style="overflow-x:auto; padding:100px; width: 90%; margin: auto;">
+
   <table>
       <tr>
         <th>SELECIONAR</th>
 		</tr>
-          <% for(var i=0; i < busca.length; i++){ %>
+          <% for(var i=0; i < busca2.length; i++){ %>
             <tr>
         <td>
-          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i].id_questoes) %>"
+          <input type="checkbox" value="<%= convertQuestionToJSON(busca2[i].id_questoes) %>"
             name="questao_descricao"
-            id="<%= busca[i].id_questoes %>"
+            id="<%= busca2[i].id_questoes %>"
             />
 
-              <label for="<%= busca[i].id_questoes %>">
-                  <%= busca[i].questao %>
+              <label for="<%= busca2[i].id_questoes %>">
+                  <%= busca2[i].questao %>
                   <div class="label2">
-                    (Peso: <%= busca[i].pontuacao %> )
+                    (Peso: <%= busca2[i].pontuacao %> )
                   </div>
               </label>
+          </td>
+          <td>
+            <label for="<%= busca2[i].disciplina %>">
+              <strong>Disciplina:</strong> <%= busca2[i].disciplina %></label>
           </td>
               <br>
           <% } %>

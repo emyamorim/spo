@@ -7,7 +7,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 }
 .header { background-color: #d9d7d7;  height:130px;  }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -20,7 +20,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 .login h2{ color: white;  text-align: center;
 }
 
-.login p {color:white; margin-bottom:0.5%;} 
+.login p {color:white; margin-bottom:0.5%;}
 
 .login{ width:50%; padding: 30px;	margin-top:4%;	margin-right: 24%;   margin-left:20px;  margin-bottom: 50px;   float:right; background-color:#01A9B2;
 }
@@ -28,7 +28,7 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 #btn { float:right; background-color:green; color: white;  padding: 14px 20px;  margin: 8px 0;  border: none;  cursor: pointer;  width:30%;
 	text-align: center; 	border-radius:3px;   font-weight: bold; margin-right:3%;
 }
-	
+
 
 .btn:hover { opacity: 0.8;  color: white;
 }
@@ -37,14 +37,17 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 }
 .btn-group .button {
   background-color: #4CAF50; border: none; color: white; padding: 15px 32px; float:right;  margin-top:-9%; margin-right:3%;
-  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer; 
-}	
-	
+  text-align: center; text-decoration: none; display: inline-block; font-size: 16px;       cursor: pointer;
+}
+
 </style>
+
+<title>Editar Professor</title>
+<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img class="logo" src="/imagens/logo.png" width="300" height="180">
   <a href="/logar"><button id="botao2" class="button">SAIR</button></a>
 <a href="/listarProfessor"><button id="botao1"class="button">VOLTAR</button></a>
 
@@ -53,22 +56,22 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
 <div class="login">
 
  <form action='/editarProfessor' method='post' >
- 
+
 <h2>EDITAR PROFESSOR </h2>
 <br>
  <% for(var i=0;i<busca.length;i++){ %>
 
   <p>RM:</p>
   <input name="rm_professor" value="<%=busca[0].rm_professor %>" style="resize: none; width:100%; height: 30px;"></input>
-  
+
 <p>NOME:</p>
  <input name="nome_prof"  value="<%=busca[0].nome_prof %>" style="resize: none; width:100%; height: 30px;" > </input>
- 
- 
+
+
 <p>SOBRENOME:</p>
   <input name="sobrenome_prof" value="<%=busca[0].sobrenome_prof %>" style="resize: none; width:100%; height: 30px;"> </input>
-   
-   
+
+
   <button type="submit" id="btn" class="btn">EDITAR</button>
 	</div>
 </form>

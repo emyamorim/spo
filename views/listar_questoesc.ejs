@@ -10,7 +10,7 @@ body { margin: 0;   font-family: Arial, Helvetica, sans-serif;   background-colo
 h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-bottom:0.2%;
 }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -20,7 +20,7 @@ h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-b
 #botao1{margin-right:0.5%;}
 #botao2{margin-left:1%; margin-right:2%;}
 
-table { border-collapse: collapse;  width: 100%; border: 1px solid #ddd; background-color:#d9d7d7;
+table { border-collapse: collapse;  width: 100%; border: 1px solid #ddd; background-color:#d9d7d7; 
 margin-top:-47px;
 }
 
@@ -35,7 +35,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 .botaodeletar{width:100%; background-color:red; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px; font-weight: bold;}
 .botaodeletar:hover{opacity : 0.7;}
 
-.buscar{float: right; margin-right:25%; height:8 px; width: 3%;  padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey;
+.buscar{float: right; margin-right:25%; height:8 px; width: 3%;  padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey;  
          border-left: none; cursor: pointer; margin-top:-0.1%;}
 
 .select{width:10%; height:30px; margin-left:2%; background-color: #f2f2f2}
@@ -45,11 +45,11 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 </style>
 <head>
-  <title>Quetsões Cadastradas</title>
+  <title>QUESTÕES CADASTRADAS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
+<link rel="sortcut icon" href="/imagens/logoicon.png" type="image/png"/>
 </head>
 <body>
 <div class="header">
@@ -90,9 +90,7 @@ tr:nth-child(even){background-color: #f2f2f2}
   <button class="buscar" type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-
-
-  <h2>Questões cadastradas</h2>
+  <h2>Questões cadastradas</h2>         
   <div style="overflow-x:auto; padding:90px;">
   <table>
       <tr>
@@ -109,23 +107,23 @@ tr:nth-child(even){background-color: #f2f2f2}
 		<th>Alternativa Correta</th>
 		<th colspan="3" style="text-align:center">AÇÕES</th>
       </tr>
-	  <% for(var i=0;i<busca.length;i++){ %>
-
+	  <% for(var i=0;i<busca3.length;i++){ %>
+  
       <tr>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"> <%= busca[i].questao %></textarea></td>
-      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_a %></textarea></td>
-      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_b %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_c %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_d %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_e %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].disciplina %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].bimestre %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].pontuacao %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].serie %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].correta %></textarea></td>
-	  <td> <a href="/buscaEditar/<%=busca[i].id_questoes %>"><button class="botaoalterar">Editar</button></a>
-	  <td><a href="/deletarQuestoes/<%=busca[i].id_questoes %>"><button class="botaodeletar">Deletar</button></a>
-
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"> <%= busca3[i].questao %></textarea></td>  
+      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].alternativa_a %></textarea></td>
+      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].alternativa_b %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].alternativa_c %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].alternativa_d %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].alternativa_e %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].disciplina %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].bimestre %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].pontuacao %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].serie %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca3[i].correta %></textarea></td>
+	  <td> <a href="/buscaEditar/<%=busca3[i].id_questoes %>"><button class="botaoalterar">Alterar</button></a>
+	  <td><a href="/deletarQuestoes/<%=busca3[i].id_questoes %>"><button class="botaodeletar">Deletar</button></a>
+	 
       </tr>
 	</div>
 	  <% } %>

@@ -46,6 +46,9 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 }
 
 </style>
+
+<title>Editar Questões</title>
+<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
 </head>
 <body>
 <div class="header">
@@ -57,7 +60,7 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
 
 <div class="login">
 
- <form action='/editarQuestoes' method='post' >
+ <form action='/editarQuestoes' method='post'>
 
 <h2>EDITAR QUESTÃO </h2>
 <br>
@@ -66,28 +69,28 @@ select  { width: 100%; padding: 12px 20px;  margin: 8px 0;  display: inline-bloc
      <p> DISICIPLINA: </p>
  <select name="disciplina" > <br>
     <option><%=busca[0].disciplina%></option>
-    <option value="fisica" id="apple">Fisíca</option>
-    <option value="quimica" id="orange">Quimíca</option>
-	<option value="gso" id="orange">GSO</option>
+    <option name="Fisíca" id="apple">Fisíca</option>
+    <option name="Quimíca" id="orange">Quimíca</option>
+	<option name="GSO" id="orange">GSO</option>
   </select>
 
 
       <p> BIMESTRE:</p>
 <select name="bimestre" > <br>
     <option><%=busca[0].bimestre%></option>
-    <option value="1bim" id="apple">1° Bimestre</option>
-    <option value="2bim" id="orange">2° Bimestre</option>
-	 <option value="3bim" id="orange">3° Bimestre</option>
-	 <option value="4bim" id="orange">4° Bimestre</option>
+    <option name="1° Bimestre" id="apple">1° Bimestre</option>
+    <option name="2° Bimestre" id="orange">2° Bimestre</option>
+	 <option name="3° Bimestre" id="orange">3° Bimestre</option>
+	 <option name="4° Bimestre" id="orange">4° Bimestre</option>
   </select>
 
 
   <p> SÉRIE:</p>
 <select name="serie" > <br>
     <option><%=busca[0].serie%></option>
-    <option value="1ano" id="apple">1° Ano</option>
-    <option value="2ano" id="orange">2° Ano</option>
-	 <option value="3ano" id="orange">3° Ano</option>
+    <option name="1° Ano" id="apple">1° Ano</option>
+    <option name="2° Ano" id="orange">2° Ano</option>
+	 <option name="3° Ano" id="orange">3° Ano</option>
   </select>
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <style>
 
 body { margin: 0;   font-family: Arial, Helvetica, sans-serif;   background-color: WHITE;
@@ -28,10 +28,11 @@ th, td { text-align: left;   padding: 8px;
 
 tr:nth-child(even){background-color: #f2f2f2}
 
-.botaoalterar{width:100%; background-color:green; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px;  font-weight: bold;}
+.botaoalterar{width:40%; background-color:green; color: white; border: none; padding: 8px 12px; cursor: pointer; 
+              border-radius:5px;  font-weight: bold; float:right;}
 .botaoalterar:hover{opacity : 0.7;}
 
-.botaodeletar{width:100%; background-color:red; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px; font-weight: bold;}
+.botaodeletar{width:40%; background-color:red; color: white; border: none; padding: 8px 12px; cursor: pointer;  border-radius:5px; font-weight: bold; }
 .botaodeletar:hover{opacity : 0.7;}
 
 .botaobuscar{float:left; height:8 px; width: 3%; padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey; margin-right:6%;}
@@ -39,11 +40,11 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 </style>
 <head>
-  <title>Questoes cadastradas</title>
+  <title>Professores Cadastrados</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
 </head>
 <body>
 <div class="header">
@@ -55,8 +56,8 @@ tr:nth-child(even){background-color: #f2f2f2}
 <form action="/listarProfessor" method="get"></form>
 <br><br><br><br><br><br>
 
-<form>
-  <input class="barrabuscar" type="text" placeholder="Buscar..." name="xxxxxxxxxxxxxxxx">
+<form method="post" action="/listarProfessorf">
+  <input class="barrabuscar" type="text" placeholder="Buscar..." name="btnBuscar" id="btnBuscar">
   <button class="botaobuscar" type="submit"><i class="fa fa-search"></i></button>
 </form>
 
@@ -67,6 +68,7 @@ tr:nth-child(even){background-color: #f2f2f2}
         <th>RM</th>
         <th>Nome</th>
 	    <th>Sobrenome</th>
+		<th>Senha</th>
 		<th colspan="2" style="text-align:center">AÇÕES</th>
       </tr>
 	  <% for(var i=0;i<busca.length;i++){ %>
@@ -75,8 +77,9 @@ tr:nth-child(even){background-color: #f2f2f2}
 	  <td><%= busca[i].rm_professor %></td>  
       <td><%= busca[i].nome_prof %></td>
       <td><%= busca[i].sobrenome_prof %></td>
-	  <td> <a href="/buscaEditarProfessor/<%=busca[i].rm_professor %>"><button class="botaoalterar">Alterar</button></a>
-	  <td><a href="/deletarProfessor/<%=busca[i].rm_professor %>"><button class="botaodeletar">Deletar</button></a>
+	  <td><%= busca[i].senha_prof %></td>
+	  <td> <a href="/buscaEditarProfessor/<%= busca[i].rm_professor %>"><button class="botaoalterar">Editar</button></a>
+	  <td><a href="/deletarProfessor/<%= busca[i].rm_professor %>"><button class="botaodeletar">Deletar</button></a>
 	 
       </tr>
 	</div>

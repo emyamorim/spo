@@ -14,6 +14,10 @@ alunoBanco.prototype.busca=function(id,callback){
 	this._conexao.query('select*from aluno where rm_aluno=?',id, callback);
 }
 
+alunoBanco.prototype.busca2= function(rm_aluno,callback){
+	this._conexao.query('select * from aluno where rm_aluno like ?',rm_aluno,callback);
+}
+
 alunoBanco.prototype.editar=function(dados,callback){
 	this._conexao.query('UPDATE aluno SET senha_aluno=? WHERE rm_aluno=?',[dados,dados.rm_aluno],callback);
 }

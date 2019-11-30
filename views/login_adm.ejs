@@ -22,9 +22,6 @@
         margin-top: -1%;
       }
 
-      .container {
-        margin-top: -4%;
-      }
 
       #botaoEntrar {
         background-color: dodgerblue;
@@ -39,13 +36,26 @@
       #botaoEntrar:hover {
         background-color: #171717;
       }
+	  
+	#botao1{margin-right:0.5%;}
+#botao2{margin-left:1%; margin-right:2%;}
+
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+          border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
+
+.button:hover { background-color: #171717;  }
+  
+	
     </style>
-    <title>Login form</title>
+    <title>Login ADM</title>
     <link rel="stylesheet" href="./style.css" />
+<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
   </head>
   <body>
     <div class="header">
-      <img class="logo" src="imagens/logo.png" width="300" height="180" />
+      <img class="logo" src="imagens/logo.png" width="300" height="180"/>
+	  <a href="/logarProfessor"><button id="botao2" class="button">Professor</button></a>
+<a href="/logarAluno"><button id="botao1" class="button">Aluno</button></a>
     </div>
 
     <!-- partial:index.partial.html -->

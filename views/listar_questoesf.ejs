@@ -45,11 +45,11 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 </style>
 <head>
-  <title>Quetsões Cadastradas</title>
+  <title>QUESTÕES CADASTRADAS</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
+<link rel="sortcut icon" href="/imagens/logoicon.png" type="image/png"/>
 </head>
 <body>
 <div class="header">
@@ -90,8 +90,6 @@ tr:nth-child(even){background-color: #f2f2f2}
   <button class="buscar" type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-
-
   <h2>Questões cadastradas</h2>         
   <div style="overflow-x:auto; padding:90px;">
   <table>
@@ -109,22 +107,22 @@ tr:nth-child(even){background-color: #f2f2f2}
 		<th>Alternativa Correta</th>
 		<th colspan="3" style="text-align:center">AÇÕES</th>
       </tr>
-	  <% for(var i=0;i<busca.length;i++){ %>
+	  <% for(var i=0;i<busca2.length;i++){ %>
   
       <tr>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"> <%= busca[i].questao %></textarea></td>  
-      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_a %></textarea></td>
-      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_b %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_c %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_d %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].alternativa_e %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].disciplina %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].bimestre %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].pontuacao %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].serie %></textarea></td>
-	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca[i].correta %></textarea></td>
-	  <td> <a href="/buscaEditar/<%=busca[i].id_questoes %>"><button class="botaoalterar">Editar</button></a>
-	  <td><a href="/deletarQuestoes/<%=busca[i].id_questoes %>"><button class="botaodeletar">Deletar</button></a>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"> <%= busca2[i].questao %></textarea></td>  
+      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].alternativa_a %></textarea></td>
+      <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].alternativa_b %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].alternativa_c %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].alternativa_d %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].alternativa_e %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].disciplina %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].bimestre %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].pontuacao %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].serie %></textarea></td>
+	  <td><textarea style="resize:none;" disabled rows="4" cols="10"><%= busca2[i].correta %></textarea></td>
+	  <td> <a href="/buscaEditar/<%=busca2[i].id_questoes %>"><button class="botaoalterar">Editar</button></a>
+	  <td><a href="/deletarQuestoes/<%=busca2[i].id_questoes %>"><button class="botaodeletar">Deletar</button></a>
 	 
       </tr>
 	</div>

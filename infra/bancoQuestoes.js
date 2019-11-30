@@ -18,6 +18,30 @@ questoesBanco.prototype.busca = function(id_questoes, callback) {
   );
 };
 
+questoesBanco.prototype.busca2 = function(questao, callback) {
+  this._conexao.query(
+    'select * from questoes where questao like ?',
+    questao,
+    callback
+  );
+};
+
+questoesBanco.prototype.busca22 = function(questao, callback) {
+  this._conexao.query(
+    'select * from questoes where questao like ?',
+    ['%' + questao.btnBuscar + '%'],
+    callback
+  );
+};
+
+questoesBanco.prototype.busca3 = function(dados, callback) {
+  this._conexao.query(
+    'SELECT * FROM questoes WHERE serie = ? AND disciplina = ? AND bimestre = ?',
+    [dados.serie, dados.disciplina, dados.bimestre],
+    callback
+  );
+};
+
 questoesBanco.prototype.editar = function(dados, callback) {
   this._conexao.query(
     'UPDATE questoes SET ? WHERE id_questoes=?',

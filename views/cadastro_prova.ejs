@@ -9,7 +9,7 @@
     <title>Cadastrar Prova</title>
 <link rel="sortcut icon" href="/imagens/logoiconn.png" type="image/png"/>
 
-<style>
+  <style>
 * {  box-sizing: border-box; }
 
  body {margin: 0;      font-family: Arial, Helvetica, sans-serif;        background-color: WHITE;    }
@@ -60,7 +60,7 @@ input {height:30px;}
 .titulo{float:right; margin-right:8%; margin-top:-6%;}
 .tituloinput{width:400px; height:35px;}
 
-    </style>
+  </style>
   </head>
 
   <body>
@@ -90,6 +90,25 @@ input {height:30px;}
         </p>
       </div>
      <br>     <br>     <br>
+     <div class="label">
+        <h3>Disciplina:</h3>
+        <select name="disciplina" class="select">
+            <option value="">Selecione</option>
+            <option name="Fisíca" id="apple">Fisíca</option>
+            <option name="Quimíca" id="orange">Quimíca</option>
+            <option name="GSO" id="orange">GSO</option>
+        </select>
+    </div>
+    <div class="label">
+       <h3>Bimestre:</h3>
+       <select required name="bimestre">
+          <option value="">Selecione</option>
+          <option name="1° Bimestre" id="apple">1° Bimestre</option>
+          <option name="2° Bimestre" id="orange">2° Bimestre</option>
+          <option name="3° Bimestre" id="orange">3° Bimestre</option>
+          <option name="4° Bimestre" id="orange">4° Bimestre</option>
+        </select>
+    </div>
       <div class="label">
          <input type="number" hidden id="rm_professor" name="rm_professor" />
          <h3>Menções:</h3>  <label for="">MB</label>

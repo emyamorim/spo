@@ -10,7 +10,7 @@ body { margin: 0;   font-family: Arial, Helvetica, sans-serif;   background-colo
 h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-bottom:0.2%;
 }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -28,7 +28,7 @@ th, td { text-align: left;   padding: 8px;
 
 tr:nth-child(even){background-color: #f2f2f2}
 
-.botaoalterar{width:40%; background-color:green; color: white; border: none; padding: 8px 12px; cursor: pointer; 
+.botaoalterar{width:40%; background-color:green; color: white; border: none; padding: 8px 12px; cursor: pointer;
               border-radius:5px;  font-weight: bold; float:right;}
 .botaoalterar:hover{opacity : 0.7;}
 
@@ -61,7 +61,7 @@ tr:nth-child(even){background-color: #f2f2f2}
   <button class="botaobuscar" type="submit"><i class="fa fa-search"></i></button>
 </form>
 
-  <h2>Professores Cadastrados</h2>         
+  <h2>Professores Cadastrados</h2>
   <div style="overflow-x:auto; padding:100px;">
   <table>
       <tr>
@@ -72,15 +72,15 @@ tr:nth-child(even){background-color: #f2f2f2}
 		<th colspan="2" style="text-align:center">AÇÕES</th>
       </tr>
 	  <% for(var i=0;i<busca2.length;i++){ %>
-  
+
       <tr>
-	  <td><%= busca2[i].rm_professor %></td>  
+	  <td><%= busca2[i].rm_professor %></td>
       <td><%= busca2[i].nome_prof %></td>
       <td><%= busca2[i].sobrenome_prof %></td>
 	  <td><%= busca2[i].senha_prof %></td>
 	  <td> <a href="/buscaEditarProfessor/<%= busca2[i].rm_professor %>"><button class="botaoalterar">Editar</button></a>
 	  <td><a href="/deletarProfessor/<%= busca2[i].rm_professor %>"><button class="botaodeletar">Deletar</button></a>
-	 
+
       </tr>
 	</div>
 	  <% } %>

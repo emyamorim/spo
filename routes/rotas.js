@@ -154,6 +154,7 @@ module.exports = function(app) {
       }
     });
   });
+
   //EDITAR//
   app.get('/buscaEditarAluno/:rm_aluno', function(req, res) {
     var rm_aluno = req.params.rm_aluno;
@@ -299,6 +300,7 @@ module.exports = function(app) {
     var rm_professor = req.params.rm_professor;
     var conexao = app.infra.conexao();
     var professorBanco = new app.infra.bancoProfessor(conexao);
+
     professorBanco.busca(rm_professor, function(erro, resposta) {
       if (erro) {
         console.log(erro);
@@ -442,8 +444,37 @@ module.exports = function(app) {
     res.render('index_aluno.ejs');
   });
 
-  app.get('/listarProva', function(req, res) {
-    res.render('listar_prova.ejs');
+  app.get('/listarProva/:rm_professor', function(req, res) {
+    var rm_professor = req.params.rm_professor;
+    var conexao = app.infra.conexao();
+    var bancoProva = new app.infra.bancoProva(conexao);
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        res.render('listar_prova.ejs', { data: resposta });
+      }
+    };
+
+    bancoProva.obterProvasPorRMProfessor(rm_professor, callback);
+  });
+
+  app.get('/deletarProva/:rm_professor/:idProva', function(req, res) {
+    var rm_professor = req.params.rm_professor;
+    var idProva = req.params.idProva;
+    var conexao = app.infra.conexao();
+    var bancoProva = new app.infra.bancoProva(conexao);
+
+    var callback = function(erro, idProva) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        res.redirect('/listarProva/' + rm_professor);
+      }
+    };
+
+    bancoProva.deletar(idProva, callback);
   });
 
   app.get('/listarProvaaluno', function(req, res) {
@@ -607,13 +638,11 @@ module.exports = function(app) {
     }
 
     var bancoProva = new app.infra.bancoProva(app.infra.conexao());
-
     if (Array.isArray(dados.questao_descricao)) {
       dados.questao_descricao = `"${dados.questao_descricao}"`;
     }
 
     bancoProva.salvar(dados, callback);
-
     console.log(dados);
     return;
   });

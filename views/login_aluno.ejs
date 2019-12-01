@@ -121,14 +121,13 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
 
 		   <div class="f_row last">
           <label>Série</label>
-          <select id="select" class="input-field"  name="serie_aluno"> <br>
-        <option value="volvo"></option>
-        <option value="1Info" id="apple">1° ano - INFO</option>
-	    <option value="1Log" id="apple">1° ano - LOG</option>
-        <option value="2Info" id="orange">2° ano - INFO</option>
-		 <option value="2Log" id="orange">2° ano - LOG</option>
-	    <option value="3Info" id="orange">3° ano - INFO</option>
-		<option value="3Log" id="orange">3° ano - LOG</option>
+          <select id="select" class="input-field"  name="serie_aluno">
+              <option></option>
+              <% for (let index = 1; index <= 3; index++) { %>
+                <option name="<%= index %>°A" id="apple"><%= index %>° A</option>
+                <option name="<%= index %>°B" id="apple"><%= index %>° B</option>
+                <option name="<%= index %>°Log" id="apple"><%= index %>° Log</option>
+               <% } %>
           </select>
           <u></u>
         </div>

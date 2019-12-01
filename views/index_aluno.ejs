@@ -32,13 +32,13 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img class="logo" src="/imagens/logo.png" width="300" height="180">
   <a href="/logarAluno"><button id="botao2" class="button">SAIR</button></a>
 </div>
 <form action="/indexAluno" method="get"></form>
 <div class="container1" id="container">
   <h2>PROVAS DISPONÍVEIS</h2>
-    <a href="/listarProvaaluno"><button type="button" class="botoesB">VISUALIZAR</button></a>
+    <a id="listarProvaaluno"><button type="button" class="botoesB">VISUALIZAR</button></a>
   </div>
 
   <div class="container2" id="container">
@@ -46,5 +46,23 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
     <a href="/mencoesaluno"><button type="button" class="botoesB">VISUALIZAR</button></a>
   </div>
 
+  <% if (locals.rm_aluno) { %>
+    <script>
+       localStorage.setItem('rm_aluno', '<%= rm_aluno %>');
+       var object = document.getElementById('listarProvaaluno');
+       object.setAttribute('href', '/listarProvaaluno/<%= rm_aluno %>');
+    </script>
+ <% } %>
+
+  <% if (!locals.rm_aluno) {%>
+    <script>
+      if (localStorage.getItem('rm_aluno').length > 0) {
+        var rm_aluno = localStorage.getItem('rm_aluno');
+
+        var object = document.getElementById('listarProvaaluno')
+        .setAttribute('href', '/listarProvaaluno/'+ rm_aluno);
+      }
+    </script>
+ <% } %>
 </body>
 </html>

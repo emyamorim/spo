@@ -109,6 +109,19 @@ input {height:30px;}
           <option name="4° Bimestre" id="orange">4° Bimestre</option>
         </select>
     </div>
+    <div class="label">
+        <h3>Série:</h3>
+        <select name="serie" class="select">
+          <option value="">Selecione</option>
+          <% for (let index = 1; index <= 3; index++) { %>
+            <option name="<%= index %>° A" id="apple"><%= index %>° A</option>
+            <option name="<%= index %>° B" id="apple"><%= index %>° B</option>
+            <option name="<%= index %>° Log" id="apple"><%= index %>° Log</option>
+           <% } %>
+        </select>
+    </div>
+
+      </select>
       <div class="label">
          <input type="number" hidden id="rm_professor" name="rm_professor" />
          <h3>Menções:</h3>  <label for="">MB</label>
@@ -167,6 +180,7 @@ input {height:30px;}
          <option name="3° Bimestre" id="orange">3° Bimestre</option>
          <option name="4° Bimestre" id="orange">4° Bimestre</option>
         </select>
+
         <button class="buscar" type="submit"><i class="fa fa-search"></i></button>
       </form>
 

@@ -62,15 +62,14 @@ body { margin: 0; font-family: Arial, Helvetica, sans-serif; background-color: W
   <input name="sobrenome_aluno" value="<%=busca[0].sobrenome_aluno %>" style="resize: none; width:100%; height: 30px;"> </input>
 
 <p>Série</p>
-        <select style="resize: none; width:100%; height: 40px;" name="serie_aluno"> <br>
+     <select style="resize: none; width:100%; height: 40px;" name="serie_aluno">
         <option value="volvo"><%=busca[0].serie_aluno %></option>
-        <option value="1Info" id="apple">1° ano - INFO</option>
-	    <option value="1Log" id="apple">1° ano - LOG</option>
-        <option value="2Info" id="orange">2° ano - INFO</option>
-		 <option value="2Log" id="orange">2° ano - LOG</option>
-	    <option value="3Info" id="orange">3° ano - INFO</option>
-		<option value="3Log" id="orange">3° ano - LOG</option>
-          </select>
+        <% for (let index = 1; index <= 3; index++) { %>
+          <option name="<%= index %>°A" id="apple"><%= index %>° A</option>
+          <option name="<%= index %>°B" id="apple"><%= index %>° B</option>
+          <option name="<%= index %>°Log" id="apple"><%= index %>° Log</option>
+         <% } %>
+    </select>
 
 <p>Turma</p>
           <select style="resize: none; width:100%; height: 40px;" name="turma_aluno"> <br>

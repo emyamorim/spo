@@ -244,7 +244,10 @@ module.exports = function(app) {
           console.log(resposta);
           if (resposta.length) {
             sessao.logado = 1;
-            res.render('index_aluno.ejs', { logado: sessao.logado });
+            res.render('index_aluno.ejs', {
+              logado: sessao.logado,
+              rm_aluno: resposta[0].rm_aluno
+            });
           } else {
             res.render('validaraluno.ejs');
           }
@@ -477,8 +480,22 @@ module.exports = function(app) {
     bancoProva.deletar(idProva, callback);
   });
 
-  app.get('/listarProvaaluno', function(req, res) {
-    res.render('listar_provaaluno.ejs');
+  app.get('/listarProvaaluno/:rm_aluno', function(req, res) {
+    var rm_aluno = req.params.rm_aluno;
+    var conexao = app.infra.conexao();
+    var bancoProva = new app.infra.bancoProva(conexao);
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log(resposta);
+
+        res.render('listar_provaaluno.ejs', { data: resposta });
+      }
+    };
+
+    bancoProva.listarProvaAlunoPorId(rm_aluno, callback);
   });
 
   app.get('/provaAluno', function(req, res) {

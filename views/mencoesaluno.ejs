@@ -10,7 +10,7 @@ body { margin: 0;   font-family: Arial, Helvetica, sans-serif;   background-colo
 h2 { background-color: #333333; margin-top:2%; padding:1%; color:white; margin-bottom:0.2%;
 }
 
-.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; 
+.button { background-color: #424242; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none;
           border-radius:30px;   display: inline-block; font-size: 16px;   cursor: pointer;   float: right; margin-top:50px; }
 
 .button:hover { background-color: #171717;  }
@@ -39,7 +39,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img class="logo" src="/imagens/logo.png" width="300" height="180">
   <a href="/logarAluno"><button id="botao2" class="button">SAIR</button></a>
 <a href="/indexAluno"><button id="botao1"class="button">VOLTAR</button></a>
 
@@ -49,23 +49,25 @@ tr:nth-child(even){background-color: #f2f2f2}
 <br><br><br><br><br><br>
 
 
-  <h2>MENÇÕES</h2>         
+  <h2>MENÇÕES</h2>
   <div style="overflow-x:auto; padding:100px;">
   <table>
       <tr>
-      
 		<th>TÍTULO DA PROVA</th>
 		<th>BIMESTRE</th>
 		<th>MENÇÃO</th>
       </tr>
-	  
-      <tr>
-	  <td>teste</td>
-	  <td>teste</td>
-	  <td>teste</td>
-      </tr>
+
+      <% for (const item of data) { %>
+        <tr>
+          <td><%= item.titulo_prova%></td>
+          <td><%= item.bimestre%></td>
+          <td><%= item.mencao_aluno%></td>
+        </tr>
+     <% } %>
+
 	</div>
-	 
+
   </table>
 
 

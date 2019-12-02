@@ -43,7 +43,7 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
 
   <div class="container2" id="container">
   <h2>MENÇÕES</h2>
-    <a href="/mencoesaluno"><button type="button" class="botoesB">VISUALIZAR</button></a>
+    <a id="visualizarMencoes"><button type="button" class="botoesB">VISUALIZAR</button></a>
   </div>
 
   <% if (locals.rm_aluno) { %>
@@ -51,6 +51,9 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
        localStorage.setItem('rm_aluno', '<%= rm_aluno %>');
        var object = document.getElementById('listarProvaaluno');
        object.setAttribute('href', '/listarProvaaluno/<%= rm_aluno %>');
+
+       var object = document.getElementById('visualizarMencoes')
+        .setAttribute('href', '/mencoesaluno/<%= rm_aluno %>');
     </script>
  <% } %>
 
@@ -60,7 +63,10 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
         var rm_aluno = localStorage.getItem('rm_aluno');
 
         var object = document.getElementById('listarProvaaluno')
-        .setAttribute('href', '/listarProvaaluno/'+ rm_aluno);
+        .setAttribute('href', '/listarProvaaluno/' + rm_aluno);
+
+        var object = document.getElementById('visualizarMencoes')
+        .setAttribute('href', '/mencoesaluno/' + rm_aluno);
       }
     </script>
  <% } %>

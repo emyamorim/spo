@@ -584,6 +584,8 @@ module.exports = function(app) {
     payload.mencao_aluno = mencaoNota;
     payload.rm_aluno = req.params.rm_aluno;
     payload.id_prova = req.params.id_prova;
+    payload.titulo_prova = data.titulo_prova;
+    payload.bimestre = data.bimestre;
 
     var conexao = app.infra.conexao();
     var bancoProva = new app.infra.bancoProva(conexao);
@@ -594,8 +596,22 @@ module.exports = function(app) {
     res.render('gerarMencao.ejs');
   });
 
-  app.get('/mencoesaluno', function(req, res) {
-    res.render('mencoesaluno.ejs');
+  app.get('/mencoesaluno/:rm_aluno', function(req, res) {
+    var conexao = app.infra.conexao();
+    var bancoResposta = new app.infra.bancoResposta(conexao);
+    var rm_aluno = req.params.rm_aluno;
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log(resposta);
+
+        res.render('mencoesaluno.ejs', { data: resposta });
+      }
+    };
+
+    bancoResposta.listarPorRMAluno(rm_aluno, callback);
   });
 
   //1 ano//

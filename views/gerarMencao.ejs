@@ -36,15 +36,15 @@ margin-left:27%;}
 </head>
 <body>
 <div class="header">
-<img class="logo" src="imagens/logo.png" width="300" height="180">
+<img class="logo" src="/imagens/logo.png" width="300" height="180">
 </div>
 
-<form action="/gerarMencao" method="get">
+<form action="/gerarMencao" method="get"></form>
 
  <div class="container1" id="container">
-  <h2>MENÇÃO: I</h2>
-    <h2>ACERTOS: 10</h2>
-  <a href="/logar"><button class="button">SAIR</button></a>
+  <h2>MENÇÃO: <%= data.mencao_aluno %></h2>
+    <h2>ACERTOS: <%= data.qtnAcertadas %></h2>
+  <a href="/logaraluno"><button class="button">SAIR</button></a>
   </div>
 
 

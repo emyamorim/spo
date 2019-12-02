@@ -192,16 +192,13 @@ input {height:30px;}
           <% for(var i=0; i < busca.length; i++){ %>
             <tr>
         <td>
-          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i].id_questoes) %>"
+          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i]) %>"
             name="questao_descricao"
             id="<%= busca[i].id_questoes %>"
             />
 
               <label for="<%= busca[i].id_questoes %>">
                   <%= busca[i].questao %>
-                  <div class="label2">
-                    (Peso: <%= busca[i].pontuacao %> )
-                  </div>
               </label>
           </td>
               <br>

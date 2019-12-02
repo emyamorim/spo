@@ -495,11 +495,99 @@ module.exports = function(app) {
       }
     };
 
-    bancoProva.listarProvaAlunoPorId(rm_aluno, callback);
+    bancoProva.listarProvasAlunoPorIdAluno(rm_aluno, callback);
   });
 
-  app.get('/provaAluno', function(req, res) {
-    res.render('prova_aluno.ejs');
+  app.get('/provaAluno/:rm_aluno/:id_prova', function(req, res) {
+    var rm_aluno = req.params.rm_aluno;
+    var id_prova = req.params.id_prova;
+    var conexao = app.infra.conexao();
+    var bancoProva = new app.infra.bancoProva(conexao);
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        var questoes = resposta[0].questao_descricao.substring(1);
+        questoes = questoes.slice(0, -1).split('},');
+
+        questoes = questoes.map(item => {
+          item = item + '}';
+          item = item.includes('}}') ? item.replace('}}', '}') : item;
+
+          return JSON.parse(item);
+        });
+
+        resposta[0].rm_aluno = rm_aluno;
+        resposta[0].id_prova = id_prova;
+        resposta[0].questao_descricao = questoes;
+
+        res.render('prova_aluno.ejs', { data: resposta[0] });
+      }
+    };
+
+    bancoProva.listarProvasPorIdProva(rm_aluno, id_prova, callback);
+  });
+
+  app.post('/provaAluno/:rm_aluno/:id_prova', function(req, res) {
+    var data = req.body;
+    var mencaoNota = 'I';
+    var qtnAcertadas = 0;
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        resposta.mencao_aluno = mencaoNota;
+        resposta.qtnAcertadas = qtnAcertadas;
+
+        res.render('gerarMencao.ejs', { data: resposta });
+      }
+    };
+
+    var selecionadas = data.opcoesSelecionadas.split(',');
+
+    data.corretas.forEach(item => {
+      var questaoCorreta = item;
+
+      for (const item of selecionadas) {
+        var opcSelecionado = item;
+
+        if (opcSelecionado.toLowerCase() === questaoCorreta.toLowerCase()) {
+          opcSelecionado.toLowerCase() == questaoCorreta.toLowerCase()
+            ? qtnAcertadas++
+            : null;
+          break;
+        }
+      }
+    });
+
+    if (qtnAcertadas === parseInt(data.mencao_mb)) {
+      mencaoNota = 'MB';
+    }
+
+    if (
+      qtnAcertadas < parseInt(data.mencao_mb) &&
+      qtnAcertadas >= parseInt(data.mencao_b)
+    ) {
+      mencaoNota = 'B';
+    }
+
+    if (
+      qtnAcertadas < parseInt(data.mencao_b) &&
+      qtnAcertadas >= parseInt(data.mencao_r)
+    ) {
+      mencaoNota = 'R';
+    }
+
+    var payload = {};
+    payload.mencao_aluno = mencaoNota;
+    payload.rm_aluno = req.params.rm_aluno;
+    payload.id_prova = req.params.id_prova;
+
+    var conexao = app.infra.conexao();
+    var bancoProva = new app.infra.bancoProva(conexao);
+    bancoProva.salvarProvaAluno(payload, callback);
   });
 
   app.get('/gerarMencao', function(req, res) {
@@ -574,7 +662,7 @@ module.exports = function(app) {
     var bancoProva = new app.infra.bancoProva(app.infra.conexao());
 
     if (Array.isArray(dados.questao_descricao)) {
-      dados.questao_descricao = `${dados.questao_descricao}`;
+      dados.questao_descricao = `"${dados.questao_descricao}"`;
     }
 
     bancoProva.salvar(dados, callback);

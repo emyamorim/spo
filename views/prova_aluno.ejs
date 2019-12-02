@@ -28,8 +28,6 @@ tr:nth-child(even){background-color: #cce9f0;}
 
 .button1:hover { background-color: #171717;  }
 
-
-
 </style>
 <head>
   <title>Avaliação</title>
@@ -44,46 +42,62 @@ tr:nth-child(even){background-color: #cce9f0;}
 <a href="/indexAluno"><button class="button1">VOLTAR</button></a>
 </div>
 <form action="/provaAluno" method="get"></form>
-
 <br><br><br><br><br><br>
 
-        <table style="width:80%; margin-left:7.5%;">
+  <table style="width:80%; margin-left:7.5%;">
 		<tr>
-        <th>História do Brasil</th>
-        <th>2 °BIMESTRE </th>
-	    <th>Disciplina: História</th>
-		<th>Professor: Emily</th>
+        <th><%= data.titulo %></th>
+        <th><%= data.bimestre %> </th>
+	    <th>Disciplina: <%= data.disciplina %></th>
 		</tr>
 	</table>
 
   <div style="overflow-x:auto; padding:100px;">
+  <form action="/provaAluno/<%= data.rm_aluno %>/<%= data.id_prova %>/" method="post">
   <table>
-      <tr>
-	  <td><br>Quanto é 1+1?<br><br>
-	  <input type="radio" checked name="a"> 2<br><br>
-  <input type="radio" checked name="b" > 3<br><br>
-  <input type="radio" checked name="c" > 4<br><br>
-<input type="radio" checked name="d" > 5<br><br>
-<input type="radio" checked name="e" > 6<br><br>
-	  </td>
+    <% for (const item of data.questao_descricao) { %>
+        <tr>
+          <td><br><%= item.questao %><br><br>
+          <input required name="radio<%= item.id_questoes%>" type="radio" onclick="addOpcao('a-<%= item.id_questoes%>')" value="a-<%= item.id_questoes%>">
+           <label for="radio<%= item.id_questoes%>"><%= item.alternativa_a %></label>
+          <br><br>
+          <input name="radio<%= item.id_questoes%>" type="radio" onclick="addOpcao('b-<%= item.id_questoes%>')" value="b-<%= item.id_questoes%>">
+          <label for="radio<%= item.id_questoes%>"><%= item.alternativa_b %></label>
+          <br><br>
+          <input name="radio<%= item.id_questoes%>" type="radio" onclick="addOpcao('c-<%= item.id_questoes%>')"  value="c-<%= item.id_questoes%>">
+          <label for="radio<%= item.id_questoes%>"><%= item.alternativa_c %></label>
+          <br><br>
+          <input name="radio<%= item.id_questoes%>" type="radio" onclick="addOpcao('d-<%= item.id_questoes%>')" value="d-<%= item.id_questoes%>">
+          <label for="radio<%= item.id_questoes%>"><%= item.alternativa_d %></label>
+          <br><br>
+          <input name="radio<%= item.id_questoes%>" type="radio" onclick="addOpcao('e-<%= item.id_questoes%>')" value="e-<%= item.id_questoes%>">
+          <label for="radio<%= item.id_questoes%>"><%= item.alternativa_e %></label>
+          <input type="text" hidden id="corretas" name="corretas" value="<%= item.correta %>-<%= item.id_questoes%>" />
+          <br><br>
+          </td>
       </tr>
-	   <tr>
-	  <td><br>Quanto é 1+1?<br><br>
-	  <input type="radio" checked name="a"> 2<br><br>
-  <input type="radio" checked name="b" > 3<br><br>
-  <input type="radio" checked name="c" > 4<br><br>
-<input type="radio" checked name="d" > 5<br><br>
-<input type="radio" checked name="e" > 6<br><br>
-	  </td>
-      </tr>
-
-
+    <% } %>
+    <input hidden id="opcoesSelecionadas" name="opcoesSelecionadas" >
+    <input hidden id="mencao_mb" name="mencao_mb" value="<%= data.mencao_mb%>">
+    <input hidden id="mencao_b" name="mencao_b" value="<%= data.mencao_b%>">
+    <input hidden id="mencao_r" name="mencao_r" value="<%= data.mencao_r%>">
 	</div>
+</table>
+<button class="button" type="submit">FINALIZAR</button>
+</form>
 
-  </table>
+<script>
+  var opcoesSelecionadas = [];
 
-<a href="/gerarMencao"><button class="button">FINALIZAR</button></a>
+  function addOpcao(opcao, pontuacao) {
 
+    if (opcoesSelecionadas.includes(opcao)) {
+        opcoesSelecionadas = opcoesSelecionadas.filter(item  !== opcao );
+    }
+
+    opcoesSelecionadas.push(opcao);
+    document.getElementById('opcoesSelecionadas').value = opcoesSelecionadas;
+  }
 </script>
 </body>
 </html>

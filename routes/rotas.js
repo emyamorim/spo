@@ -615,9 +615,24 @@ module.exports = function(app) {
   });
 
   //1 ano//
-  app.get('/mencoes1anoa', function(req, res) {
-    res.render('mençoes1anoa.ejs');
+  app.get('/mencoes1anoa/:nome_serie', function(req, res) {
+    var conexao = app.infra.conexao();
+    var bancoResposta = new app.infra.bancoResposta(conexao);
+    var nome_serie = req.params.nome_serie;
+
+    var callback = function(erro, resposta) {
+      if (erro) {
+        console.log(erro);
+      } else {
+        console.log('AQUIII -> ', resposta);
+
+        res.render('mençoes1anoa.ejs', { data: resposta });
+      }
+    };
+
+    bancoResposta.listarMencoesProvas(nome_serie, callback);
   });
+
   app.get('/escolherturma1anob', function(req, res) {
     res.render('escolherturma1anob.ejs');
   });

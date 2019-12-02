@@ -624,8 +624,6 @@ module.exports = function(app) {
       if (erro) {
         console.log(erro);
       } else {
-        console.log('AQUIII -> ', resposta);
-
         res.render('mençoes1anoa.ejs', { data: resposta });
       }
     };

@@ -14,24 +14,24 @@
 
  body {margin: 0;      font-family: Arial, Helvetica, sans-serif;        background-color: WHITE;    }
 
-h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-bottom:0.2%;
+h2 { background-color: #333333; margin-top:4%; padding:1%; color:white; margin-bottom:0.2%;
 }
 
 .header { background-color: #d9d7d7;  height:130px;  }
 
 .logo{margin-top:-10px;}
 
-.botaobuscar{float:right; height:8 px; width: 3%; padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey; margin-right:6%;}
+.botaobuscar{float:right; height:8 px; width: 3%; padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  
+border: 1px solid grey; margin-right:13%;}
 
-.buscar{float: right; margin-right:25%; height:8 px; width: 3%;  padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey;
-         border-left: none; cursor: pointer; margin-top:-0.1%;}
+.buscar{float: right; margin-right:56%; height:8 px; width: 3%;  padding: 5px; background: #2196F3;  color: white;  font-size: 17px;  border: 1px solid grey;
+         border-left: none; cursor: pointer; margin-top:-2.9%;}
 
 .barrabuscar{float:right; width:25%; height:32px; background-color: white;}
 
-.select{width:10%; height:30px; margin-left:2%; background-color: white;}
-
-#btn { float:right;     background-color: green;      color: white;      padding: 14px 20px;      margin: 8px 0;      border: none;
-        cursor: pointer;  width: 17%;    text-align: center;    border-radius: 3px;    font-weight: bold;     margin-right: 9%; margin-top:4%;}
+#btn { float:left;     background-color: green;      color: white;      padding: 14px 20px;      margin: 8px 0;    
+  border: none;   cursor: pointer;  width: 17%;    text-align: center;    border-radius: 3px;    font-weight: bold;  
+  margin-left: 3%; margin-top:4%; margin-top:8%;}
 
 #btn:hover{opacity: 0.8;}
 
@@ -43,8 +43,8 @@ h2 { background-color: #333333; margin-top:7%; padding:1%; color:white; margin-b
 		  }
 .button:hover { background-color: #171717;  }
 
-table { border-collapse: collapse;  width: 100%; border: 1px solid #ddd; background-color:#d9d7d7;
-margin-top:-150px; float:left;
+table { border-collapse: collapse;  width: 100%; border: 1px solid black; background-color:#d9d7d7;
+margin-top:-150px; 
 }
 
 th, td { text-align: left;   padding: 8px;
@@ -52,13 +52,16 @@ th, td { text-align: left;   padding: 8px;
 
 tr:nth-child(even){background-color: #f2f2f2}
 
-.label{margin-top:4%; margin-left:2%;}
+.label{margin-top:4%; margin-left:2%; }
 .label2{ font-weight: bold;}
 
 input {height:30px;}
 
-.titulo{float:right; margin-right:8%; margin-top:-6%;}
+.titulo{float:right; margin-right:8%; margin-top:-6%;  float:left; margin-top:3%; margin-left:2%;}
 .tituloinput{width:400px; height:35px;}
+
+.selectdiv{margin-left:7%;}
+
 
   </style>
   </head>
@@ -68,9 +71,7 @@ input {height:30px;}
 <img class="logo" src="imagens/logo.png" width="300" height="180">
   <a href="/logarProfessor"><button id="botao2" class="button">SAIR</button></a>
 <a href="/indexProf"><button id="botao1"class="button">VOLTAR</button></a>
-
 </div>
-<br><br><br><br><br><br>
 
 <%
   convertQuestionToJSON = function(value) {
@@ -80,100 +81,107 @@ input {height:30px;}
   }
   %>
 
-<form action="/cadastroprova" method="POST" onended="alert('Thank you for your feedback.')">
+<form action="/cadastroprova" method="POST" onended="alert('Valeu.')">
         <br>
-        <hr>
+        
         <h2>CADASTRAR PROVA</h2>
-        <div>
-        <p>
-          <button type="submit" id="btn">SALVAR PROVA</button>
-        </p>
+
+	   <div style="margin-left:2%; margin-top:3%;">
+          <h3>Turma:</h3>
+          <select style="resize: none; width:10%; height: 35px;" name="turma">
+            <option value="">Selecione</option>
+          <option value="a">A</option>
+	        <option value="b">B</option>
+          </select>
       </div>
-     <br>     <br>     <br>
-     <div class="label">
+        
+   
+     <div style="margin-left:16%; margin-top:-7.48%;">
         <h3>Disciplina:</h3>
-        <select name="disciplina" class="select">
+        <select style="resize: none; width:10%; height: 35px; " name="disciplina">
             <option value="">Selecione</option>
             <option name="Fisíca" id="apple">Fisíca</option>
             <option name="Quimíca" id="orange">Quimíca</option>
             <option name="GSO" id="orange">GSO</option>
         </select>
-    </div>
-    <div class="label">
+  
+       <div style="margin-left:18%; margin-top:-9.2%;">
        <h3>Bimestre:</h3>
-       <select required name="bimestre">
+       <select style="resize: none; width:13%; height: 35px;" required name="bimestre" class="select1">
           <option value="">Selecione</option>
           <option name="1° Bimestre" id="apple">1° Bimestre</option>
           <option name="2° Bimestre" id="orange">2° Bimestre</option>
           <option name="3° Bimestre" id="orange">3° Bimestre</option>
           <option name="4° Bimestre" id="orange">4° Bimestre</option>
-        </select>
-    </div>
-    <div class="label">
+        </select> </div>
+   
+        <div style="margin-left:38%; margin-top:-9.1%;">   
         <h3>Série:</h3>
-        <select name="serie" class="select">
+        <select name="serie" style="resize: none; width:13%; height: 35px;">
           <option value="">Selecione</option>
           <% for (let index = 1; index <= 3; index++) { %>
             <option name="<%= index %>° A" id="apple"><%= index %>° A</option>
             <option name="<%= index %>° B" id="apple"><%= index %>° B</option>
             <option name="<%= index %>° Log" id="apple"><%= index %>° Log</option>
            <% } %>
-        </select>
+        </select></div>
     </div>
-
-      </select>
-      <div class="label">
+	
+	
+	<div style="margin-left:63%; margin-top:-7.5%;" >
+		  <h3> <label for="">Título da prova: </label></h3>
+          <input class="tituloinput" type="text" name="titulo" placeholder="Título da prova..." />
+	  </div>
+      
+	  	   <div class="label">
          <input type="number" hidden id="rm_professor" name="rm_professor" />
          <h3>Menções:</h3>  <label for="">MB</label>
-          <input type="number" name="mencao_mb" min="1"  placeholder="Pontos" />
+          <input type="number" name="mencao_mb" min="1"  placeholder="Digite aqui..." />
           &nbsp;
           <label for="">B</label>
-          <input type="number" name="mencao_b" min="1"  placeholder="Pontos" />
+          <input type="number" name="mencao_b" min="1"  placeholder="Digite aqui..." />
           &nbsp;
           <label for="">R</label>
-          <input type="number" name="mencao_r" min="1"  placeholder="Pontos" />
+          <input type="number" name="mencao_r" min="1"  placeholder="Digite aqui..." />
           &nbsp;
           <label for="">I</label>
           <input type="number" disabled  min="1"  placeholder="< R" />
       </div>
-	    <div class="titulo">
-		  <h3> <label for="">Título da prova: </label></h3>
-          <input class="tituloinput" type="text" name="titulo" placeholder="Título da prova..." />
-	  </div>
-
-	   <div class="label">
-          <h3>Turma:</h3>
-          <select style="resize: none; width:10%; height: 35px;" name="turma">
-            <br>
-          <option value="a">A</option>
-	        <option value="b">B</option>
-          </select>
-      </div>
-      <br>
-      <br>
-      <div>
-
+	  
+	  
+	  <button type="submit" id="btn">SALVAR PROVA</button>
+	  
+	  
+	 
+	  
+      <br><br><br><br><br><br><br><br><br><br>
+	  
+	  <hr>
+	  
+	  <br><br><br>
+	  <div>
+      <div class="selectdiv">
 	  <form method="post" action="/cadastroprovafff">
         <button class="botaobuscar" type="submit"><i class="fa fa-search"></i></button>
         <input class="barrabuscar" type="text" placeholder="Buscar......" >
       </form>
 
       <form method="post" action="/cadastroprovaff">
-        <select name="serie" class="select">
+        <select style="resize: none; width:13%; height: 35px;" name="serie">
           <option value="" >Série</option>
           <option name="1° Ano" id="apple">1° Ano</option>
           <option name="2° Ano" id="orange">2° Ano</option>
          <option name="3° Ano" id="orange">3° Ano</option>
         </select>
 
-        <select name="disciplina" class="select">
+        <select name="disciplina" style="resize: none; width:13%; height: 35px;">
           <option value="">Disciplina</option>
           <option name="Fisíca" id="apple">Fisíca</option>
           <option name="Quimíca" id="orange">Quimíca</option>
         <option name="GSO" id="orange">GSO</option>
         </select>
 
-        <select name="bimestre" class="select">
+        <select name="bimestre" style="resize: none; width:13%; height: 35px;">
           <option value="">Bimestre</option>
           <option name="1° Bimestre" id="apple">1° Bimestre</option>
           <option name="2° Bimestre" id="orange">2° Bimestre</option>
@@ -182,23 +190,24 @@ input {height:30px;}
         </select>
 
         <button class="buscar" type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      </form> </div>
 
-	  <div style="overflow-x:auto; padding:100px; width: 90%; margin: auto;">
+	  <div style="padding:100px; width: 95%; ">
   <table>
       <tr>
-        <th>SELECIONAR</th>
+        <th>SELECIONAR QUESTÕES</th>
 		</tr>
           <% for(var i=0; i < busca.length; i++){ %>
             <tr>
         <td>
-          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i]) %>"
-            name="questao_descricao"
-            id="<%= busca[i].id_questoes %>"
-            />
+          <input type="checkbox" value="<%= convertQuestionToJSON(busca[i]) %>" 
+		  name="questao_descricao" 
+		  id="<%= busca[i].id_questoes %>"
+		  />
 
               <label for="<%= busca[i].id_questoes %>">
                   <%= busca[i].questao %>
+				  
               </label>
           </td>
               <br>

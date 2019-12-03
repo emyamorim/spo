@@ -122,11 +122,11 @@ body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background-color
 		   <div class="f_row last">
           <label>Série</label>
           <select id="select" class="input-field"  name="serie_aluno">
-              <option></option>
+              <option  value=""></option>
               <% for (let index = 1; index <= 3; index++) { %>
-                <option name="<%= index %>°A" id="apple"><%= index %>° A</option>
-                <option name="<%= index %>°B" id="apple"><%= index %>° B</option>
-                <option name="<%= index %>°Log" id="apple"><%= index %>° Log</option>
+                <option name="<%= index %>° A" id="apple"><%= index %>° A</option>
+                <option name="<%= index %>° B" id="apple"><%= index %>° B</option>
+                <option name="<%= index %>° Log" id="apple"><%= index %>° Log</option>
                <% } %>
           </select>
           <u></u>

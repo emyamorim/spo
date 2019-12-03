@@ -68,7 +68,7 @@ tr:nth-child(even){background-color: #f2f2f2}
         <th>RM</th>
         <th>Nome</th>
 	    <th>Sobrenome</th>
-		<th>Senha</th>
+		
 		<th colspan="2" style="text-align:center">AÇÕES</th>
       </tr>
 	  <% for(var i=0;i<busca2.length;i++){ %>
@@ -77,7 +77,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 	  <td><%= busca2[i].rm_professor %></td>
       <td><%= busca2[i].nome_prof %></td>
       <td><%= busca2[i].sobrenome_prof %></td>
-	  <td><%= busca2[i].senha_prof %></td>
+	
 	  <td> <a href="/buscaEditarProfessor/<%= busca2[i].rm_professor %>"><button class="botaoalterar">Editar</button></a>
 	  <td><a href="/deletarProfessor/<%= busca2[i].rm_professor %>"><button class="botaodeletar">Deletar</button></a>
 
